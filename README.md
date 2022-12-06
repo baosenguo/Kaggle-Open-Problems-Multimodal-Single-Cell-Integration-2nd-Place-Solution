@@ -1,20 +1,37 @@
 # Kaggle - Open Problems - Multimodal Single Cell Integration - 2nd Place Solution
 
-This document is [my part of 2nd place solution](https://www.kaggle.com/competitions/open-problems-multimodal/discussion/366476) for the  [Open Problems - Multimodal Single-Cell Competition](https://www.kaggle.com/competitions/open-problems-multimodal).
 
-For another part, see my team mate [senkin's post](https://www.kaggle.com/competitions/open-problems-multimodal/discussion/366453)
 
-If you have any questions, please feel free to contact me at [baosenguo@163.com](baosenguo@163.com).
+This repository is  for the  [Open Problems - Multimodal Single-Cell Competition](https://www.kaggle.com/competitions/open-problems-multimodal).
+
+
+
+This repository is the 2nd place solutions for the  [Open Problems - Multimodal Single-Cell Competition](https://www.kaggle.com/competitions/open-problems-multimodal).  
+
+It contains  two parts from [senkin13](https://www.kaggle.com/competitions/open-problems-multimodal/discussion/366453) and [tmp](https://www.kaggle.com/competitions/open-problems-multimodal/discussion/366476) . 
+
+
+
+If you run into any trouble with the setup/code or have any questions please contact tmp at [baosenguo@163.com](baosenguo@163.com) and senkin13 at senkin13@hotmail.com.
+
+
+
+---
+
+## tmp's part
+
+---
 
 ### OVERVIEW
 
 This pipeline mainly consists of the following parts:
+
  - Preprocessing
  - FE
  - Modeling
- 
+
 This simple solution produced a quite robust result (Public_lb 1st; Private_lb 2nd).
- 
+
 ### Preprocessing
 
 - using raw count:
@@ -52,6 +69,7 @@ both mlp and lgb used the same features introduced above.
 - lgb
 
   
+
 ### Local CV
 
 - random 5-fold cv
@@ -60,13 +78,13 @@ both mlp and lgb used the same features introduced above.
 ### Code
 
 - dataset preparation 
-  - /data/prepare.ipynb
-  - /data/preprocess.ipynb
+  - /tmp/data/prepare.ipynb
+  - /tmp/data/preprocess.ipynb
 
 - training
-  - /model/lgb.ipynb
-  - /model/mlp.ipynb
-  - /model/blending.ipynb
+  - /tmp/model/lgb.ipynb
+  - /tmp/model/mlp.ipynb
+  - /tmp/model/blending.ipynb
 
 ### requirements
 
@@ -75,4 +93,67 @@ both mlp and lgb used the same features introduced above.
   - numpy 1.20.3
   - torch 1.9.0
   - sklearn 1.0.2
-  
+
+
+
+---
+
+## senkin13's part
+
+---
+
+### HARDWARE: 
+
+(The following specs were used to create the original solution)
+
+Windows 10 (4 TB boot disk, 64 vCPUs, 300 GB memory)
+1 x NVIDIA TITAN RTX
+
+
+
+### SOFTWARE
+
+(python packages are detailed separately in `requirements.txt`):
+
+Python 3.8.10
+CUDA 11.3
+cuddn 7.6.5.32
+nvidia drivers v.466.47
+
+
+
+### DATA SETUP
+
+(assumes the [Kaggle API](https://github.com/Kaggle/kaggle-api) is installed)
+
+
+
+### shell
+
+below are the shell commands used in each step, as run from the top level directory
+
+
+
+mkdir -p input features model sub
+
+- download all data to input
+
+DATA PROCESSING
+
+- preprocess_cite.ipynb
+- preprocess_multi.ipynb
+
+TRAIN & PREDICTION
+
+- cite_lgb_transformed_sparse_matrix.ipynb   
+- cite_lgb_raw_clr_pca.ipynb
+- cite_lgb_raw_sparse_matrix.ipynb
+- cite_lgb_raw_target.ipynb
+- multi_lgb.ipynb
+- multi_nn.ipynb   
+
+ENSEMBLE
+
+- move tmp's tmp_cite_ensemble.joblib to ensemble/
+- ensemble.ipynb
+
